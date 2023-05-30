@@ -1,7 +1,8 @@
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const authRouter = require('./routes/api/auth');
 const tweetsRouter = require('./routes/api/tweets');
@@ -14,6 +15,13 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+app.use(
+  require('express-session')({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 app.use('/api/auth', authRouter);
 app.use('/api/tweets', tweetsRouter);
