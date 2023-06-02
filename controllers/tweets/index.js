@@ -3,6 +3,8 @@ const getById = require('./getById');
 const addById = require('./addById');
 const deleteById = require('./deleteById');
 const updateById = require('./updateById');
+const addTweet = require('./addEventSource');
+const eventsHandler = require('./getEventSource');
 
 module.exports = {
   getAll,
@@ -10,4 +12,6 @@ module.exports = {
   addById,
   deleteById,
   updateById,
+  addTweet,
+  eventsHandler,
 };
